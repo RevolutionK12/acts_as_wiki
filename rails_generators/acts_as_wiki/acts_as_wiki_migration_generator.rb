@@ -1,5 +1,3 @@
-require 'rails/generators/migration'
-
 module ActsAsWiki
 	class ActsAsWikiMigrationGenerator < Rails::Generators::Base
 		include Rails::Generators::Migration
