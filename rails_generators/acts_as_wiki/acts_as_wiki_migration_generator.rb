@@ -1,7 +1,7 @@
 require 'rails/generators/migration'
 
 module ActsAsWiki
-	class MigrationGenerator < Rails::Generators::Base
+	class ActsAsWikiMigrationGenerator < Rails::Generators::Base
 		include Rails::Generators::Migration
 		
 		desc "Generates migration for wiki_markup"
