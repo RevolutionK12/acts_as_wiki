@@ -15,14 +15,15 @@ Jeweler::Tasks.new do |gem|
   gem.name = "acts_as_wiki"
   gem.homepage = "http://github.com/krisfox@gmail.com/acts_as_wiki"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Simplifies adding or allowing a given column of your model to have wiki markup support}
+  gem.description = %Q{Simplifies adding or allowing a given column of you model to have a wiki markup support. Also includes 
+	                     some helpers and form helpers to support this}
   gem.email = "kris.fox@gmail.com"
   gem.authors = ["kris fox"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
   # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
-  #  gem.add_runtime_dependency 'jabber4r', '> 0.1'
-  #  gem.add_development_dependency 'rspec', '> 1.2.3'
+  gem.add_runtime_dependency 'RedCloth', '>= 4.2.2'
+  gem.add_development_dependency 'rspec'
 end
 Jeweler::RubygemsDotOrgTasks.new
 
@@ -42,7 +43,6 @@ task :default => :spec
 require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
-
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title = "acts_as_wiki #{version}"
   rdoc.rdoc_files.include('README*')

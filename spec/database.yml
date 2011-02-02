@@ -1,0 +1,6 @@
+mysql:
+  adapter: mysql2
+  user: root
+  password:
+  database: acts_as_wiki_test
+  host: 127.0.0.1
