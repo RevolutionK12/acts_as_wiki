@@ -31,7 +31,9 @@ module ActsAsWiki::Markable
 				if self.wiki_markup
 					return self.wiki_markup
 				else
-					self.wiki_markup = ActsAsWiki::WikiMarkup.create
+					self.wiki_markup = ActsAsWiki::WikiMarkup.create(:markup => self.wiki_text_column)
+					self.save
+					self.wiki_markup
 				end
 			end
 			

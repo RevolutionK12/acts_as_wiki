@@ -2016,3 +2016,382 @@
   [4;36;1mSQL (0.3ms)[0m   [0;1mDELETE from wiki_markups[0m
   [4;35;1mSQL (0.3ms)[0m   [0mDELETE from markable_models[0m
   [4;36;1mSQL (0.3ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mDELETE from wiki_markups[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDELETE from markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from other_markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mDELETE from wiki_markups[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from other_markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mActsAsWiki::WikiMarkup Create (0.2ms)[0m   [0;1mINSERT INTO `wiki_markups` (`markable_type`, `markable_id`, `markup`) VALUES(NULL, NULL, NULL)[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mMarkableModel Create (0.3ms)[0m   [0mINSERT INTO `markable_models` (`text`) VALUES('')[0m
+  [4;36;1mActsAsWiki::WikiMarkup Update (0.3ms)[0m   [0;1mUPDATE `wiki_markups` SET `markable_id` = 1, `markable_type` = 'MarkableModel' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from wiki_markups[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from other_markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mActsAsWiki::WikiMarkup Create (0.3ms)[0m   [0mINSERT INTO `wiki_markups` (`markable_type`, `markable_id`, `markup`) VALUES(NULL, NULL, NULL)[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mMarkableModel Create (0.2ms)[0m   [0;1mINSERT INTO `markable_models` (`text`) VALUES('')[0m
+  [4;35;1mActsAsWiki::WikiMarkup Update (0.3ms)[0m   [0mUPDATE `wiki_markups` SET `markable_id` = 2, `markable_type` = 'MarkableModel' WHERE `id` = 2[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mActsAsWiki::WikiMarkup Destroy (0.2ms)[0m   [0;1mDELETE FROM `wiki_markups` WHERE `id` = 2[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mActsAsWiki::WikiMarkup Load (0.3ms)[0m   [0;1mSELECT * FROM `wiki_markups` WHERE (`wiki_markups`.markable_id = 2 AND `wiki_markups`.markable_type = 'MarkableModel') LIMIT 1[0m
+  [4;35;1mActsAsWiki::WikiMarkup Load (0.2ms)[0m   [0mSELECT * FROM `wiki_markups` WHERE (`wiki_markups`.markable_id = 2 AND `wiki_markups`.markable_type = 'MarkableModel') LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from wiki_markups[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from other_markable_models[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from wiki_markups[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from markable_models[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mDELETE from other_markable_models[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from wiki_markups[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDELETE from markable_models[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mDELETE from other_markable_models[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from wiki_markups[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from other_markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mMarkableModel Create (0.3ms)[0m   [0mINSERT INTO `markable_models` (`text`) VALUES('<html><body>Test</body></html>')[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDELETE from wiki_markups[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mDELETE from markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from other_markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mMarkableModel Create (0.2ms)[0m   [0;1mINSERT INTO `markable_models` (`text`) VALUES('<html><body>Test</body></html>')[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mActsAsWiki::WikiMarkup Create (0.2ms)[0m   [0mINSERT INTO `wiki_markups` (`markable_type`, `markable_id`, `markup`) VALUES(NULL, NULL, '<html><body>Test</body></html>')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mActsAsWiki::WikiMarkup Load (0.3ms)[0m   [0mSELECT * FROM `wiki_markups` WHERE (`wiki_markups`.markable_id = 4 AND `wiki_markups`.markable_type = 'MarkableModel') LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mActsAsWiki::WikiMarkup Update (0.3ms)[0m   [0mUPDATE `wiki_markups` SET `markable_id` = 4, `markable_type` = 'MarkableModel' WHERE `id` = 3[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (2.5ms)[0m   [0mDELETE from wiki_markups[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mDELETE from markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from other_markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mActsAsWiki::WikiMarkup Create (0.2ms)[0m   [0;1mINSERT INTO `wiki_markups` (`markable_type`, `markable_id`, `markup`) VALUES(NULL, NULL, NULL)[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mMarkableModel Create (0.2ms)[0m   [0mINSERT INTO `markable_models` (`text`) VALUES('')[0m
+  [4;36;1mActsAsWiki::WikiMarkup Update (0.3ms)[0m   [0;1mUPDATE `wiki_markups` SET `markable_id` = 5, `markable_type` = 'MarkableModel' WHERE `id` = 4[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (35.4ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDELETE from wiki_markups[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mDELETE from markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from other_markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mActsAsWiki::WikiMarkup Create (0.2ms)[0m   [0mINSERT INTO `wiki_markups` (`markable_type`, `markable_id`, `markup`) VALUES(NULL, NULL, NULL)[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mMarkableModel Create (0.3ms)[0m   [0;1mINSERT INTO `markable_models` (`text`) VALUES('')[0m
+  [4;35;1mActsAsWiki::WikiMarkup Update (0.4ms)[0m   [0mUPDATE `wiki_markups` SET `markable_id` = 6, `markable_type` = 'MarkableModel' WHERE `id` = 5[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mDELETE from wiki_markups[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from other_markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mDELETE from wiki_markups[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDELETE from markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from other_markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mActsAsWiki::WikiMarkup Create (0.3ms)[0m   [0;1mINSERT INTO `wiki_markups` (`markable_type`, `markable_id`, `markup`) VALUES(NULL, NULL, NULL)[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mMarkableModel Create (0.2ms)[0m   [0mINSERT INTO `markable_models` (`text`) VALUES('')[0m
+  [4;36;1mActsAsWiki::WikiMarkup Update (0.3ms)[0m   [0;1mUPDATE `wiki_markups` SET `markable_id` = 1, `markable_type` = 'MarkableModel' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from wiki_markups[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from other_markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mActsAsWiki::WikiMarkup Create (0.2ms)[0m   [0mINSERT INTO `wiki_markups` (`markable_type`, `markable_id`, `markup`) VALUES(NULL, NULL, NULL)[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mMarkableModel Create (0.2ms)[0m   [0;1mINSERT INTO `markable_models` (`text`) VALUES('')[0m
+  [4;35;1mActsAsWiki::WikiMarkup Update (0.3ms)[0m   [0mUPDATE `wiki_markups` SET `markable_id` = 2, `markable_type` = 'MarkableModel' WHERE `id` = 2[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mActsAsWiki::WikiMarkup Destroy (0.2ms)[0m   [0;1mDELETE FROM `wiki_markups` WHERE `id` = 2[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mActsAsWiki::WikiMarkup Load (0.3ms)[0m   [0;1mSELECT * FROM `wiki_markups` WHERE (`wiki_markups`.markable_id = 2 AND `wiki_markups`.markable_type = 'MarkableModel') LIMIT 1[0m
+  [4;35;1mActsAsWiki::WikiMarkup Load (0.3ms)[0m   [0mSELECT * FROM `wiki_markups` WHERE (`wiki_markups`.markable_id = 2 AND `wiki_markups`.markable_type = 'MarkableModel') LIMIT 1[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from wiki_markups[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from other_markable_models[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from wiki_markups[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from other_markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mActsAsWiki::WikiMarkup Create (0.2ms)[0m   [0mINSERT INTO `wiki_markups` (`markable_type`, `markable_id`, `markup`) VALUES(NULL, NULL, NULL)[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOtherMarkableModel Create (0.4ms)[0m   [0;1mINSERT INTO `other_markable_models` (`other_column_text`) VALUES('')[0m
+  [4;35;1mActsAsWiki::WikiMarkup Update (0.3ms)[0m   [0mUPDATE `wiki_markups` SET `markable_id` = 1, `markable_type` = 'OtherMarkableModel' WHERE `id` = 3[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mDELETE from wiki_markups[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from markable_models[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mDELETE from other_markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mActsAsWiki::WikiMarkup Create (0.2ms)[0m   [0;1mINSERT INTO `wiki_markups` (`markable_type`, `markable_id`, `markup`) VALUES(NULL, NULL, NULL)[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOtherMarkableModel Create (0.2ms)[0m   [0mINSERT INTO `other_markable_models` (`other_column_text`) VALUES('')[0m
+  [4;36;1mActsAsWiki::WikiMarkup Update (0.3ms)[0m   [0;1mUPDATE `wiki_markups` SET `markable_id` = 2, `markable_type` = 'OtherMarkableModel' WHERE `id` = 4[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mActsAsWiki::WikiMarkup Destroy (0.2ms)[0m   [0mDELETE FROM `wiki_markups` WHERE `id` = 4[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mActsAsWiki::WikiMarkup Load (0.3ms)[0m   [0mSELECT * FROM `wiki_markups` WHERE (`wiki_markups`.markable_id = 2 AND `wiki_markups`.markable_type = 'OtherMarkableModel') LIMIT 1[0m
+  [4;36;1mActsAsWiki::WikiMarkup Load (0.2ms)[0m   [0;1mSELECT * FROM `wiki_markups` WHERE (`wiki_markups`.markable_id = 2 AND `wiki_markups`.markable_type = 'OtherMarkableModel') LIMIT 1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mDELETE from wiki_markups[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDELETE from markable_models[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mDELETE from other_markable_models[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mMarkableModel Create (0.3ms)[0m   [0;1mINSERT INTO `markable_models` (`text`) VALUES('<html><body>Test</body></html>')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from wiki_markups[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from other_markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mMarkableModel Create (0.2ms)[0m   [0mINSERT INTO `markable_models` (`text`) VALUES('<html><body>Test</body></html>')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mActsAsWiki::WikiMarkup Create (0.3ms)[0m   [0;1mINSERT INTO `wiki_markups` (`markable_type`, `markable_id`, `markup`) VALUES(NULL, NULL, '<html><body>Test</body></html>')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mActsAsWiki::WikiMarkup Load (0.5ms)[0m   [0;1mSELECT * FROM `wiki_markups` WHERE (`wiki_markups`.markable_id = 4 AND `wiki_markups`.markable_type = 'MarkableModel') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mActsAsWiki::WikiMarkup Update (0.3ms)[0m   [0;1mUPDATE `wiki_markups` SET `markable_id` = 4, `markable_type` = 'MarkableModel' WHERE `id` = 5[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from wiki_markups[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from other_markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mActsAsWiki::WikiMarkup Create (0.2ms)[0m   [0mINSERT INTO `wiki_markups` (`markable_type`, `markable_id`, `markup`) VALUES(NULL, NULL, NULL)[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mMarkableModel Create (0.2ms)[0m   [0;1mINSERT INTO `markable_models` (`text`) VALUES('')[0m
+  [4;35;1mActsAsWiki::WikiMarkup Update (0.3ms)[0m   [0mUPDATE `wiki_markups` SET `markable_id` = 5, `markable_type` = 'MarkableModel' WHERE `id` = 6[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mDELETE from wiki_markups[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mDELETE from markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from other_markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mActsAsWiki::WikiMarkup Create (0.3ms)[0m   [0;1mINSERT INTO `wiki_markups` (`markable_type`, `markable_id`, `markup`) VALUES(NULL, NULL, NULL)[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mMarkableModel Create (0.2ms)[0m   [0mINSERT INTO `markable_models` (`text`) VALUES('')[0m
+  [4;36;1mActsAsWiki::WikiMarkup Update (0.3ms)[0m   [0;1mUPDATE `wiki_markups` SET `markable_id` = 6, `markable_type` = 'MarkableModel' WHERE `id` = 7[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mDELETE from wiki_markups[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from other_markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mDELETE from wiki_markups[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from other_markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mActsAsWiki::WikiMarkup Create (0.2ms)[0m   [0;1mINSERT INTO `wiki_markups` (`markable_type`, `markable_id`, `markup`) VALUES(NULL, NULL, NULL)[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mMarkableModel Create (0.3ms)[0m   [0mINSERT INTO `markable_models` (`text`) VALUES('')[0m
+  [4;36;1mActsAsWiki::WikiMarkup Update (0.3ms)[0m   [0;1mUPDATE `wiki_markups` SET `markable_id` = 1, `markable_type` = 'MarkableModel' WHERE `id` = 1[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from wiki_markups[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from other_markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mActsAsWiki::WikiMarkup Create (0.2ms)[0m   [0mINSERT INTO `wiki_markups` (`markable_type`, `markable_id`, `markup`) VALUES(NULL, NULL, NULL)[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mMarkableModel Create (0.2ms)[0m   [0;1mINSERT INTO `markable_models` (`text`) VALUES('')[0m
+  [4;35;1mActsAsWiki::WikiMarkup Update (0.3ms)[0m   [0mUPDATE `wiki_markups` SET `markable_id` = 2, `markable_type` = 'MarkableModel' WHERE `id` = 2[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mActsAsWiki::WikiMarkup Destroy (42.7ms)[0m   [0;1mDELETE FROM `wiki_markups` WHERE `id` = 2[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mActsAsWiki::WikiMarkup Load (0.4ms)[0m   [0;1mSELECT * FROM `wiki_markups` WHERE (`wiki_markups`.markable_id = 2 AND `wiki_markups`.markable_type = 'MarkableModel') LIMIT 1[0m
+  [4;35;1mActsAsWiki::WikiMarkup Load (0.3ms)[0m   [0mSELECT * FROM `wiki_markups` WHERE (`wiki_markups`.markable_id = 2 AND `wiki_markups`.markable_type = 'MarkableModel') LIMIT 1[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDELETE from wiki_markups[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDELETE from markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from other_markable_models[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDELETE from wiki_markups[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from markable_models[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mDELETE from other_markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mActsAsWiki::WikiMarkup Create (0.2ms)[0m   [0mINSERT INTO `wiki_markups` (`markable_type`, `markable_id`, `markup`) VALUES(NULL, NULL, NULL)[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mOtherMarkableModel Create (0.3ms)[0m   [0;1mINSERT INTO `other_markable_models` (`other_column_text`) VALUES('')[0m
+  [4;35;1mActsAsWiki::WikiMarkup Update (0.3ms)[0m   [0mUPDATE `wiki_markups` SET `markable_id` = 1, `markable_type` = 'OtherMarkableModel' WHERE `id` = 3[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mDELETE from wiki_markups[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from markable_models[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mDELETE from other_markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mActsAsWiki::WikiMarkup Create (0.2ms)[0m   [0;1mINSERT INTO `wiki_markups` (`markable_type`, `markable_id`, `markup`) VALUES(NULL, NULL, NULL)[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mOtherMarkableModel Create (0.2ms)[0m   [0mINSERT INTO `other_markable_models` (`other_column_text`) VALUES('')[0m
+  [4;36;1mActsAsWiki::WikiMarkup Update (0.3ms)[0m   [0;1mUPDATE `wiki_markups` SET `markable_id` = 2, `markable_type` = 'OtherMarkableModel' WHERE `id` = 4[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mActsAsWiki::WikiMarkup Destroy (0.2ms)[0m   [0mDELETE FROM `wiki_markups` WHERE `id` = 4[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mActsAsWiki::WikiMarkup Load (0.5ms)[0m   [0mSELECT * FROM `wiki_markups` WHERE (`wiki_markups`.markable_id = 2 AND `wiki_markups`.markable_type = 'OtherMarkableModel') LIMIT 1[0m
+  [4;36;1mActsAsWiki::WikiMarkup Load (0.4ms)[0m   [0;1mSELECT * FROM `wiki_markups` WHERE (`wiki_markups`.markable_id = 2 AND `wiki_markups`.markable_type = 'OtherMarkableModel') LIMIT 1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mDELETE from wiki_markups[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDELETE from markable_models[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mDELETE from other_markable_models[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mMarkableModel Create (0.2ms)[0m   [0;1mINSERT INTO `markable_models` (`text`) VALUES('<html><body>Test</body></html>')[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from wiki_markups[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from other_markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mMarkableModel Create (0.2ms)[0m   [0mINSERT INTO `markable_models` (`text`) VALUES('<html><body>Test</body></html>')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mActsAsWiki::WikiMarkup Create (0.2ms)[0m   [0;1mINSERT INTO `wiki_markups` (`markable_type`, `markable_id`, `markup`) VALUES(NULL, NULL, '<html><body>Test</body></html>')[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mActsAsWiki::WikiMarkup Load (0.3ms)[0m   [0;1mSELECT * FROM `wiki_markups` WHERE (`wiki_markups`.markable_id = 4 AND `wiki_markups`.markable_type = 'MarkableModel') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mActsAsWiki::WikiMarkup Update (0.3ms)[0m   [0;1mUPDATE `wiki_markups` SET `markable_id` = 4, `markable_type` = 'MarkableModel' WHERE `id` = 5[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from wiki_markups[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from other_markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mActsAsWiki::WikiMarkup Create (0.2ms)[0m   [0mINSERT INTO `wiki_markups` (`markable_type`, `markable_id`, `markup`) VALUES(NULL, NULL, NULL)[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mMarkableModel Create (0.2ms)[0m   [0;1mINSERT INTO `markable_models` (`text`) VALUES('')[0m
+  [4;35;1mActsAsWiki::WikiMarkup Update (0.3ms)[0m   [0mUPDATE `wiki_markups` SET `markable_id` = 5, `markable_type` = 'MarkableModel' WHERE `id` = 6[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mMarkableModel Update (0.3ms)[0m   [0;1mUPDATE `markable_models` SET `text` = '<html><body>Test</body></html>' WHERE `id` = 5[0m
+  [4;35;1mActsAsWiki::WikiMarkup Update (0.3ms)[0m   [0mUPDATE `wiki_markups` SET `markup` = '<html><body>Test</body></html>' WHERE `id` = 6[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mDELETE from wiki_markups[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mDELETE from markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from other_markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from wiki_markups[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mDELETE from markable_models[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mDELETE from other_markable_models[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mActsAsWiki::WikiMarkup Create (0.2ms)[0m   [0;1mINSERT INTO `wiki_markups` (`markable_type`, `markable_id`, `markup`) VALUES(NULL, NULL, NULL)[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mMarkableModel Create (0.2ms)[0m   [0mINSERT INTO `markable_models` (`text`) VALUES('')[0m
+  [4;36;1mActsAsWiki::WikiMarkup Update (0.3ms)[0m   [0;1mUPDATE `wiki_markups` SET `markable_id` = 6, `markable_type` = 'MarkableModel' WHERE `id` = 7[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mMarkableModel Update (0.3ms)[0m   [0mUPDATE `markable_models` SET `text` = '<h1>Give RedCloth a try!</h1>\n<p>A <strong>simple</strong> paragraph with<br />\na line break, some <em>emphasis</em> and a <a href=\"http://redcloth.org\">link</a></p>\n<ul>\n	<li>an item</li>\n	<li>and another</li>\n</ul>\n<ol>\n	<li>one</li>\n	<li>two</li>\n</ol>' WHERE `id` = 6[0m
+  [4;36;1mActsAsWiki::WikiMarkup Update (0.2ms)[0m   [0;1mUPDATE `wiki_markups` SET `markup` = 'h1. Give RedCloth a try!\n\nA *simple* paragraph with\na line break, some _emphasis_ and a \"link\":http://redcloth.org\n\n* an item\n* and another\n\n# one\n# two' WHERE `id` = 7[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mCOMMIT[0m

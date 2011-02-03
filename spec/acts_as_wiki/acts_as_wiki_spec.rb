@@ -91,6 +91,13 @@ a line break, some <em>emphasis</em> and a <a href="http://redcloth.org">link</a
 			@markable_model.text.should eql(@test_string)
 		end
 		
+		it "should put the html into the markup when we allow_markup" do
+			@markable_model.text = @test_string
+			@markable_model.save
+			@markable_model.allow_markup!
+			@markable_model.wiki_markup.markup.should eql(@test_string)
+		end
+		
 		it "should accept html in markup and return html" do
 			@markable_model.allow_markup!.markup = @test_string
 			@markable_model.save

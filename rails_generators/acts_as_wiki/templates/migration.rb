@@ -5,7 +5,7 @@ class ActsAsWikiMigration < ActiveRecord::Migration
 			t.string  :markable_type
 			t.text    :markup
 		end
-		add_index :wiki_markups [:markable_id, :markable_type]
+		add_index :wiki_markups, [:markable_id, :markable_type]
   end
 
   def self.down
