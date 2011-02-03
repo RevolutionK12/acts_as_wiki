@@ -16,14 +16,6 @@ if defined?(ActiveRecord::Base)
   ActiveRecord::Base.send :include, ActsAsWiki::Markable
 end
 
-if defined?(ActionView::Helpers::FormHelper)
-	ActionView::Helpers::FormHelper.send :include, ActsAsWiki::Markable::FormHelper
-end
-
-if defined?(ActionView::Helpers::FormBuilder) 
-	ActionView::Helpers::FormBuilder.send :include, ActsAsWiki::Markable::FormBuilder
-end
-
-if defined?(ActionView::Helpers::FormTagHelper)
-	ActionView::Helpers::FormTagHelper.send :include, ActsAsWiki::Markable::FormTagHelper
+if defined?(ActionView::Helpers::FormBuilder)
+	ActionView::Helpers::FormBuilder.send :include, ActsAsWiki::Markable::WikiFormBuilder
 end
