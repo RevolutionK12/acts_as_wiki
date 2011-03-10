@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{acts_as_wiki}
-  s.version = "0.2.0"
+  s.version = "0.2.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["kris fox"]
-  s.date = %q{2011-03-09}
+  s.date = %q{2011-03-10}
   s.description = %q{Simplifies adding or allowing a given column of you model to have a wiki markup support. Also includes 
 	                     some helpers and form helpers to support this}
   s.email = %q{kris.fox@gmail.com}
@@ -28,15 +28,15 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "acts_as_wiki.gemspec",
+    "generators/acts_as_wiki_custom_wiki/acts_as_wiki_custom_wiki_generator.rb",
+    "generators/acts_as_wiki_custom_wiki/templates/custom_redcloth.rb",
+    "generators/acts_as_wiki_migration/acts_as_wiki_migration_generator.rb",
+    "generators/acts_as_wiki_migration/templates/migration.rb",
     "lib/acts_as_wiki.rb",
     "lib/acts_as_wiki/acts_as_wiki.rb",
     "lib/acts_as_wiki/acts_as_wiki/core.rb",
     "lib/acts_as_wiki/acts_as_wiki/view_helpers.rb",
     "lib/acts_as_wiki/wiki_markup.rb",
-    "rails_generators/acts_as_wiki/acts_as_wiki_migration_generator.rb",
-    "rails_generators/acts_as_wiki/custom_wiki_generator.rb",
-    "rails_generators/acts_as_wiki/templates/custom_redcloth.rb",
-    "rails_generators/acts_as_wiki/templates/migration.rb",
     "spec/acts_as_wiki/acts_as_wiki_spec.rb",
     "spec/database.yml",
     "spec/debug.log",
