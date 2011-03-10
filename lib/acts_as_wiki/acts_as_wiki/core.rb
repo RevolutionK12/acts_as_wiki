@@ -15,7 +15,7 @@ module ActsAsWiki::Markable
 			
 			def initialize_acts_as_wiki_core
 				class_eval do 
-					has_one :wiki_markup, :as => :markable, :class_name => "ActsAsWiki::WikiMarkup"
+					has_one :wiki_markup, :as => :markable, :class_name => "ActsAsWiki::WikiMarkup", :dependent => :destroy
 					accepts_nested_attributes_for :wiki_markup
 					
 					alias_attribute :wiki_text_column, acts_as_wiki_options[:column].to_sym
