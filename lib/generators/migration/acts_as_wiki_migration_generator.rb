@@ -1,5 +1,5 @@
 module ActsAsWiki
-	class ActsAsWikiMigrationGenerator < Rails::Generators::Base
+	class MigrationGenerator < Rails::Generators::Base
 		def manifest 
 	    record do |m| 
 	      m.migration_template 'migration.rb', 'db/migrate', :migration_file_name => "acts_as_wiki_migration"

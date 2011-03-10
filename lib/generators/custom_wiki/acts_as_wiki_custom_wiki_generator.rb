@@ -1,5 +1,5 @@
 module ActsAsWiki
-	class ActsAsWikiCustomWikiGenerator < Rails::Generators::Base
+	class CustomWikiGenerator < Rails::Generators::Base
 		def manifest
 			record do |m|
 				m.template 'custom_redcloth.rb', 'lib/red_cloth_custom.rb', :collision => :skip
