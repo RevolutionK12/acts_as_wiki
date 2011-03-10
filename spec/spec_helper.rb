@@ -1,7 +1,8 @@
 $LOAD_PATH << "." unless $LOAD_PATH.include?(".")
 
 require 'rspec'
-
+require 'bundler'
+require 'logger'
 require File.expand_path('../../lib/acts_as_wiki', __FILE__)
 require 'red_cloth_custom'
 
