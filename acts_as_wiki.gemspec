@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{acts_as_wiki}
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["kris fox"]
-  s.date = %q{2011-02-03}
+  s.date = %q{2011-03-09}
   s.description = %q{Simplifies adding or allowing a given column of you model to have a wiki markup support. Also includes 
 	                     some helpers and form helpers to support this}
   s.email = %q{kris.fox@gmail.com}
@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "acts_as_wiki.gemspec",
     "lib/acts_as_wiki.rb",
     "lib/acts_as_wiki/acts_as_wiki.rb",
     "lib/acts_as_wiki/acts_as_wiki/core.rb",
@@ -61,9 +62,9 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<RedCloth>, [">= 4.2.2"])
-      s.add_runtime_dependency(%q<activerecord>, [">= 2.3.4"])
-      s.add_runtime_dependency(%q<activesupport>, [">= 2.3.4"])
-      s.add_runtime_dependency(%q<actionpack>, [">= 2.3.4"])
+      s.add_runtime_dependency(%q<activerecord>, [">= 3.0.0"])
+      s.add_runtime_dependency(%q<activesupport>, [">= 3.0.0"])
+      s.add_runtime_dependency(%q<actionpack>, [">= 3.0.0"])
       s.add_development_dependency(%q<rspec>, ["~> 2.0.0"])
       s.add_development_dependency(%q<rspec-rails>, ["~> 2.0.0"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
@@ -74,9 +75,9 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<rspec>, [">= 0"])
     else
       s.add_dependency(%q<RedCloth>, [">= 4.2.2"])
-      s.add_dependency(%q<activerecord>, [">= 2.3.4"])
-      s.add_dependency(%q<activesupport>, [">= 2.3.4"])
-      s.add_dependency(%q<actionpack>, [">= 2.3.4"])
+      s.add_dependency(%q<activerecord>, [">= 3.0.0"])
+      s.add_dependency(%q<activesupport>, [">= 3.0.0"])
+      s.add_dependency(%q<actionpack>, [">= 3.0.0"])
       s.add_dependency(%q<rspec>, ["~> 2.0.0"])
       s.add_dependency(%q<rspec-rails>, ["~> 2.0.0"])
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
@@ -88,9 +89,9 @@ Gem::Specification.new do |s|
     end
   else
     s.add_dependency(%q<RedCloth>, [">= 4.2.2"])
-    s.add_dependency(%q<activerecord>, [">= 2.3.4"])
-    s.add_dependency(%q<activesupport>, [">= 2.3.4"])
-    s.add_dependency(%q<actionpack>, [">= 2.3.4"])
+    s.add_dependency(%q<activerecord>, [">= 3.0.0"])
+    s.add_dependency(%q<activesupport>, [">= 3.0.0"])
+    s.add_dependency(%q<actionpack>, [">= 3.0.0"])
     s.add_dependency(%q<rspec>, ["~> 2.0.0"])
     s.add_dependency(%q<rspec-rails>, ["~> 2.0.0"])
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
