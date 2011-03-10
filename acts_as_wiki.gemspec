@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{acts_as_wiki}
-  s.version = "0.2.4"
+  s.version = "0.2.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["kris fox"]
@@ -33,10 +33,10 @@ Gem::Specification.new do |s|
     "lib/acts_as_wiki/acts_as_wiki/core.rb",
     "lib/acts_as_wiki/acts_as_wiki/view_helpers.rb",
     "lib/acts_as_wiki/wiki_markup.rb",
-    "lib/generators/custom_wiki/acts_as_wiki_custom_wiki_generator.rb",
-    "lib/generators/custom_wiki/templates/custom_redcloth.rb",
-    "lib/generators/migration/acts_as_wiki_migration_generator.rb",
-    "lib/generators/migration/templates/migration.rb",
+    "lib/generators/acts_as_wiki/custom_wiki/custom_wiki_generator.rb",
+    "lib/generators/acts_as_wiki/custom_wiki/templates/custom_redcloth.rb",
+    "lib/generators/acts_as_wiki/migration/migration_generator.rb",
+    "lib/generators/acts_as_wiki/migration/templates/migration.rb",
     "spec/acts_as_wiki/acts_as_wiki_spec.rb",
     "spec/database.yml",
     "spec/debug.log",
