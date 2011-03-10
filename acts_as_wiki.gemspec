@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{acts_as_wiki}
-  s.version = "0.2.1"
+  s.version = "0.2.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["kris fox"]
@@ -28,15 +28,15 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "acts_as_wiki.gemspec",
-    "generators/acts_as_wiki_custom_wiki/acts_as_wiki_custom_wiki_generator.rb",
-    "generators/acts_as_wiki_custom_wiki/templates/custom_redcloth.rb",
-    "generators/acts_as_wiki_migration/acts_as_wiki_migration_generator.rb",
-    "generators/acts_as_wiki_migration/templates/migration.rb",
     "lib/acts_as_wiki.rb",
     "lib/acts_as_wiki/acts_as_wiki.rb",
     "lib/acts_as_wiki/acts_as_wiki/core.rb",
     "lib/acts_as_wiki/acts_as_wiki/view_helpers.rb",
     "lib/acts_as_wiki/wiki_markup.rb",
+    "lib/generators/acts_as_wiki_custom_wiki/acts_as_wiki_custom_wiki_generator.rb",
+    "lib/generators/acts_as_wiki_custom_wiki/templates/custom_redcloth.rb",
+    "lib/generators/acts_as_wiki_migration/acts_as_wiki_migration_generator.rb",
+    "lib/generators/acts_as_wiki_migration/templates/migration.rb",
     "spec/acts_as_wiki/acts_as_wiki_spec.rb",
     "spec/database.yml",
     "spec/debug.log",
