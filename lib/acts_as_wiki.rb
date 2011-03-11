@@ -17,5 +17,5 @@ if defined?(ActiveRecord::Base)
 end
 
 if defined?(ActionView::Helpers::FormBuilder)
-	ActionView::Helpers::FormBuilder.send :include, ActsAsWiki::Markable::WikiFormBuilder
+	# ActionView::Helpers::FormBuilder.send :include, ActsAsWiki::Markable::WikiFormBuilder
 end

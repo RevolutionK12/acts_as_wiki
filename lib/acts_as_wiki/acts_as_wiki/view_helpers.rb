@@ -9,23 +9,27 @@ module ActsAsWiki::Markable
 		end
 		
 		def text_field_with_wiki(method, options = {})
+			output = nil
 			if @object.respond_to?(:has_markup?) && @object.has_markup? && (method.to_s == @object.class.acts_as_wiki_options[:column])
-				self.fields_for :wiki_markup do |w_markup|
-					w_markup.text_field :markup, options
-				end
+				output = fields_for(:wiki_markup) { |w_markup|
+					w_markup.text_field_without_wiki :markup, options
+				}
 			else
-				text_field_without_wiki method, options
+				output = text_field_without_wiki method, options
 			end
+			output
 		end
 		
 		def text_area_with_wiki(method, options = {})
+			output = nil
 			if @object.respond_to?(:has_markup?) && @object.has_markup? && (method.to_s == @object.class.acts_as_wiki_options[:column])
-				self.fields_for :wiki_markup do |w_markup|
-					w_markup.text_area :markup, options
-				end
+				output = fields_for(:wiki_markup){ |w_markup|
+					w_markup.text_area_without_wiki :markup, options
+				}
 			else
-				text_area_without_wiki method, options
+				output = text_area_without_wiki method, options
 			end
+			output
 		end
 	end
 end

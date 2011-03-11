@@ -1,6 +1,9 @@
 module ActsAsWiki::Markable
 	module Core
 		def self.included(base)
+			require 'redcloth'
+			require 'red_cloth_custom'
+			
 			base.send :include, ActsAsWiki::Markable::Core::InstanceMethods
 			base.extend ActsAsWiki::Markable::Core::ClassMethods
 			
@@ -46,6 +49,10 @@ module ActsAsWiki::Markable
 			
 			def has_markup?
 				!self.wiki_markup.nil?
+			end
+			
+			def preview_text
+				self.has_markup? ? self.wiki_markup.markup : self.text
 			end
 			
 			protected
