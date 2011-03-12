@@ -55,6 +55,10 @@ module ActsAsWiki::Markable
 				self.has_markup? ? self.wiki_markup.markup : self.text
 			end
 			
+			def preview_markup
+				self.has_markup? ? self.wiki_markup.text : self.text
+			end
+			
 			protected
 			
 			def cache_wiki_html
