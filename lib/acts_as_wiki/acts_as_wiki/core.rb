@@ -18,12 +18,9 @@ module ActsAsWiki::Markable
 			
 			def initialize_acts_as_wiki_core
 				class_eval do 
-					has_one :wiki_markup, :as => :markable, :class_name => "ActsAsWiki::WikiMarkup", :dependent => :destroy
-					accepts_nested_attributes_for :wiki_markup
-					
-					alias_attribute :wiki_text_column, acts_as_wiki_options[:column].to_sym
+					has_many :wiki_markups, :as => :markable, :class_name => "ActsAsWiki::WikiMarkup", :dependent => :destroy
+					accepts_nested_attributes_for :wiki_markups
 				end
-				
 			end
 			
 		end
@@ -31,39 +28,49 @@ module ActsAsWiki::Markable
 		module InstanceMethods
 			
 			def allow_markup!
-				if self.wiki_markup
-					return self.wiki_markup
+				if self.wiki_markups && !self.wiki_markups.empty?
+					return self.wiki_markups
 				else
-					self.wiki_markup = ActsAsWiki::WikiMarkup.create(:markup => self.wiki_text_column)
+					self.wiki_markups = wiki_columns.collect{|c| ActsAsWiki::WikiMarkup.create(:markup => self.send(c), :column => c)}
 					self.save
-					self.wiki_markup
+					self.wiki_markups
 				end
 			end
 			
 			def dissallow_markup!
-				if self.wiki_markup
-					self.wiki_markup.destroy
-					self.wiki_markup = nil
+				if !self.wiki_markups.empty?
+					self.wiki_markup.each(&:destroy)
+					self.wiki_markups = []
 				end
 			end
 			
 			def has_markup?
-				!self.wiki_markup.nil?
+				!self.wiki_markups.empty?
 			end
 			
-			def preview_text
-				self.has_markup? ? self.wiki_markup.markup : self.text
+			def preview_text(column=nil)
+				if self.has_markup? 
+					column.nil? ? self.wiki_markups.first.markup : self.wiki_markup(column)
+				else
+					column.nil? ? self.send(wiki_columns.first) : self.send(column)
+				end
 			end
 			
-			def preview_markup
-				self.has_markup? ? self.wiki_markup.text : self.text
+			def preview_markup(column=nil)
+				self.has_markup? ? (column.nil? ? self.wiki_markups.first.text : self.wiki_markup(column).text) : self.text
 			end
 			
+			def wiki_markup(column) 
+				self.wiki_markups.where(:column => column).first
+			end
+						
 			protected
-			
+
 			def cache_wiki_html
 				if has_markup?
-					self.wiki_text_column = self.wiki_markup.text
+					wiki_columns.each do |col|
+						self.send "#{col}=", self.wiki_markup(col).text
+					end
 				end
 				return true
 			end
