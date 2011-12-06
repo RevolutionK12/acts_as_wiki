@@ -57,11 +57,15 @@ module ActsAsWiki::Markable
 			end
 			
 			def preview_markup(column=nil)
-				self.has_markup? ? (self.wiki_markup('text').text rescue self.text) : self.text
+				self.has_markup? ? (self.wiki_markup(column || 'text').text rescue self.text) : self.text
 			end
-			
-			def wiki_markup(column = nil)
-				column.nil? ? self.wiki_markups.first : self.wiki_markups.where(:column => column).first
+
+			def wiki_markup(column=nil)
+				if self.wiki_markups.all?(&:new_record?)
+					self.wiki_markups.collect{|wm| wm if wm.column == column}.first
+				else
+					column.nil? ? self.wiki_markups.first : self.wiki_markups.where(:column => column).first
+				end
 			end
 						
 			protected
