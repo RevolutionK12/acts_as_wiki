@@ -1,6 +1,6 @@
 = acts_as_wiki
 
-Description goes here.
+A simple gem that can be attached to any active record allowing any text columns to behave like a wiki text column. Formatting is done using the RedCloth gem. HTML produced by the gem is then cached in the original active record text column.
 
 == Contributing to acts_as_wiki
  

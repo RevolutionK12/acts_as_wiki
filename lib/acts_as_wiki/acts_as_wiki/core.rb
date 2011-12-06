@@ -57,7 +57,7 @@ module ActsAsWiki::Markable
 			end
 			
 			def preview_markup(column=nil)
-				self.has_markup? ? (column.nil? ? self.wiki_markups.first.text : self.wiki_markup(column).text) : self.text
+				self.has_markup? ? (self.wiki_markup('text').text rescue self.text) : self.text
 			end
 			
 			def wiki_markup(column = nil)
@@ -69,7 +69,12 @@ module ActsAsWiki::Markable
 			def cache_wiki_html
 				if has_markup?
 					wiki_columns.each do |col|
-						self.send "#{col}=", self.wiki_markup(col).text unless self.wiki_markup(col).nil?
+						if self.wiki_markup(col).nil?
+							wm = ActsAsWiki::WikiMarkup.create(:markup => self.send(col), :column => col, :markable => self)
+							self.send "#{col}=", wm.text
+						else
+							self.send "#{col}=", self.wiki_markup(col).text
+						end
 					end
 				end
 				return true

@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{acts_as_wiki}
-  s.version = "0.2.10"
+  s.version = "0.2.11"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["kris fox"]
-  s.date = %q{2011-04-06}
+  s.date = %q{2011-12-05}
   s.description = %q{Simplifies adding or allowing a given column of you model to have a wiki markup support. Also includes 
 	                     some helpers and form helpers to support this}
   s.email = %q{kris.fox@gmail.com}
@@ -48,7 +48,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/krisfox@gmail.com/acts_as_wiki}
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.4.2}
+  s.rubygems_version = %q{1.6.2}
   s.summary = %q{Simplifies adding or allowing a given column of your model to have wiki markup support}
   s.test_files = [
     "spec/acts_as_wiki/acts_as_wiki_spec.rb",
