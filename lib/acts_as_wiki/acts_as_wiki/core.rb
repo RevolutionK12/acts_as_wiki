@@ -8,7 +8,7 @@ module ActsAsWiki::Markable
 			base.extend ActsAsWiki::Markable::Core::ClassMethods
 			
 			base.class_eval do 
-				before_save :cache_wiki_html
+				before_update :cache_wiki_html
 			end
 			
 			base.initialize_acts_as_wiki_core
@@ -57,14 +57,14 @@ module ActsAsWiki::Markable
 			end
 			
 			def preview_markup(column=nil)
-				self.has_markup? ? (self.wiki_markup(column || 'text').text rescue self.text) : self.text
+				self.has_markup? ? (self.wiki_markup(column || 'text').text rescue self.send("#{column || 'text'}")) : self.send("#{column || 'text'}")
 			end
 
 			def wiki_markup(column=nil)
 				if self.wiki_markups.all?(&:new_record?)
-					self.wiki_markups.collect{|wm| wm if wm.column == column}.first
+					self.wiki_markups.collect{|wm| wm if wm.column == column.to_s}.first
 				else
-					column.nil? ? self.wiki_markups.first : self.wiki_markups.where(:column => column).first
+					column.nil? ? self.wiki_markups.first : self.wiki_markups.where(:column => column.to_s).first
 				end
 			end
 						
@@ -74,7 +74,8 @@ module ActsAsWiki::Markable
 				if has_markup?
 					wiki_columns.each do |col|
 						if self.wiki_markup(col).nil?
-							wm = ActsAsWiki::WikiMarkup.create(:markup => self.send(col), :column => col, :markable => self)
+							wm = ActsAsWiki::WikiMarkup.create(:markup => self.send(col), :column => col.to_s)
+							self.wiki_markups << wm
 							self.send "#{col}=", wm.text
 						else
 							self.send "#{col}=", self.wiki_markup(col).text
