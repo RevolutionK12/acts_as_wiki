@@ -8,7 +8,7 @@ module ActsAsWiki::Markable
 			base.extend ActsAsWiki::Markable::Core::ClassMethods
 			
 			base.class_eval do 
-				before_update :cache_wiki_html
+				before_save :cache_wiki_html
 			end
 			
 			base.initialize_acts_as_wiki_core
@@ -67,9 +67,7 @@ module ActsAsWiki::Markable
 					column.nil? ? self.wiki_markups.first : self.wiki_markups.where(:column => column.to_s).first
 				end
 			end
-						
-			protected
-
+			
 			def cache_wiki_html
 				if has_markup?
 					wiki_columns.each do |col|
@@ -84,7 +82,7 @@ module ActsAsWiki::Markable
 				end
 				return true
 			end
-			
+						
 		end
 	end
 end
