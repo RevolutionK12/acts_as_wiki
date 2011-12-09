@@ -12,9 +12,10 @@ module ActsAsWiki
 		protected
 		
 		def touch_markup
-			logger.info("hi")
-			self.markable.send("#{self.column}=", self.text)
-			self.markable.save
+			if self.markable
+				self.markable.send("#{self.column}=", self.text)
+				self.markable.save
+			end
 		end
 		
 	end
