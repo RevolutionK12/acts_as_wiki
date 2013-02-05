@@ -15,15 +15,17 @@ module ActsAsWiki
 				:column => ['text']
 			}.merge(opts)
 			
-			write_inheritable_attribute :wiki_columns, [options[:column]].flatten.map{|c| c.to_sym}
+      class_attribute :wiki_columns
+      self.wiki_columns = [options[:column]].flatten.map{ |c| c.to_s }
+
 			unless (is_acts_as_wiki? rescue false)
-				write_inheritable_attribute :acts_as_wiki_options, options
-				class_inheritable_reader    :acts_as_wiki_options
-				class_inheritable_reader    :wiki_columns
-				write_inheritable_attribute :is_acts_as_wiki?, true
-				class_inheritable_reader    :is_acts_as_wiki?
-			
-				class_eval do 
+        class_attribute :acts_as_wiki_options
+        self.acts_as_wiki_options = options
+
+        class_attribute :is_acts_as_wiki
+        self.is_acts_as_wiki = true
+
+				class_eval do
 					include ActsAsWiki::Markable::Core
 				end
 			end
