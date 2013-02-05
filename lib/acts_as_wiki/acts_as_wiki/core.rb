@@ -2,7 +2,7 @@ module ActsAsWiki::Markable
 	module Core
 		def self.included(base)
 			require 'redcloth'
-			require 'red_cloth_custom'
+      require 'red_cloth_custom'
 			
 			base.send :include, ActsAsWiki::Markable::Core::InstanceMethods
 			base.extend ActsAsWiki::Markable::Core::ClassMethods
@@ -28,18 +28,18 @@ module ActsAsWiki::Markable
 		module InstanceMethods
 			
 			def allow_markup!
+          #require 'pry'; binding.pry
 				if self.wiki_markups && !self.wiki_markups.empty?
 					return self.wiki_markups
 				else
-					self.wiki_markups = wiki_columns.collect{|c| ActsAsWiki::WikiMarkup.create(:markup => self.send(c), :column => c)}
-					self.save
+					self.wiki_markups = wiki_columns.collect{|c| ActsAsWiki::WikiMarkup.create(:markup => self.send(c.to_s), :column => c.to_s)}
 					self.wiki_markups
 				end
 			end
 			
 			def dissallow_markup!
 				if !self.wiki_markups.empty?
-					self.wiki_markup.each(&:destroy)
+					self.wiki_markups.each(&:destroy)
 					self.wiki_markups = []
 				end
 			end
