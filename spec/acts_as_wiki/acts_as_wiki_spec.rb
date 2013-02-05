@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe "ActsAsWiki" do
-  
+
 	before(:each) do 
 		clean_database!
 	end
@@ -43,11 +43,11 @@ describe "ActsAsWiki" do
 		
 		it "should now have a markupable record" do
 			@markable_model.allow_markup!.should_not == nil
-			@markable_model.allow_markup!.should eql(@markable_model.wiki_markup)
+			@markable_model.allow_markup!.should include(@markable_model.wiki_markup)
 			@markable_model.has_markup?.should == true
 		end
 		
-		it "should clear out the markapble record" do 
+		it "should clear out the markable record" do 
 			@markable_model.allow_markup!.should_not == nil
 			@markable_model.has_markup?.should == true
 			@markable_model.dissallow_markup!
@@ -99,13 +99,15 @@ a line break, some <em>emphasis</em> and a <a href="http://redcloth.org">link</a
 		end
 		
 		it "should accept html in markup and return html" do
-			@markable_model.allow_markup!.markup = @test_string
+			@markable_model.text = @test_string
+			@markable_model.allow_markup!
 			@markable_model.save
 			@markable_model.text.should eql(@test_string)
 		end
 		
 		it "should accept wiki and create html" do
-			@markable_model.allow_markup!.markup = @test_wiki
+			@markable_model.text = @test_wiki
+			@markable_model.allow_markup!
 			@markable_model.save
 			@markable_model.text.should eql(@result_html)	
 		end

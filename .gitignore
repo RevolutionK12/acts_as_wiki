@@ -40,3 +40,7 @@ tmtags
 #
 # For vim:
 #*.swp
+#
+# acts_as_wiki
+spec/debug.log
+

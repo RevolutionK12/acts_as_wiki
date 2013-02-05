@@ -3,6 +3,7 @@ ActiveRecord::Schema.define :version => 0 do
 		t.integer :markable_id
 		t.string  :markable_type
 		t.text    :markup
+    t.string  :column
 	end
 	
 	add_index :wiki_markups, [:markable_id, :markable_type]
