@@ -24,7 +24,9 @@ GEM
       tzinfo (~> 0.3.23)
     activesupport (3.0.5)
     arel (2.0.9)
+    autotest-standalone (4.5.11)
     builder (2.1.2)
+    coderay (1.0.8)
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -34,7 +36,14 @@ GEM
       bundler (~> 1.0.0)
       git (>= 1.2.5)
       rake
+    method_source (0.8.1)
     mysql2 (0.2.6)
+    pry (0.9.11.4)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.4)
+    pry-nav (0.2.3)
+      pry (~> 0.9.10)
     rack (1.2.1)
     rack-mount (0.6.13)
       rack (>= 1.0.0)
@@ -54,6 +63,7 @@ GEM
       rspec-expectations (~> 2.0.1)
     rspec-rails (2.0.1)
       rspec (~> 2.0.0)
+    slop (3.4.3)
     tzinfo (0.3.24)
 
 PLATFORMS
@@ -64,9 +74,12 @@ DEPENDENCIES
   actionpack (>= 3.0.0)
   activerecord (>= 3.0.0)
   activesupport (>= 3.0.0)
+  autotest-standalone
   bundler (~> 1.0.0)
   jeweler (~> 1.5.2)
   mysql2
+  pry
+  pry-nav
   rcov
   rspec (~> 2.0.0)
   rspec-rails (~> 2.0.0)
