@@ -16,4 +16,7 @@ group :development do
   gem "jeweler", "~> 1.5.2"
   gem "rcov", ">= 0"
 	gem "mysql2"
+  gem "pry"
+  gem "pry-nav"
+  gem "autotest-standalone"
 end

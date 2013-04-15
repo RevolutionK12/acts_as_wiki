@@ -16,18 +16,47 @@ describe "ActsAsWiki" do
 		it "should have a nil markupable column" do
 			@markable_model.wiki_markup.should == nil
 		end
-		
-		it "should now have a markupable record" do
-			@markable_model.allow_markup!.should_not == nil
-			@markable_model.has_markup?.should == true
-		end
-		
-		it "should clear out the markable record" do 
-			@markable_model.allow_markup!.should_not == nil
-			@markable_model.has_markup?.should == true
-			@markable_model.dissallow_markup!
-			@markable_model.has_markup?.should == false
-		end
+
+    context "#allow_markup!" do
+      context "when column value is present" do
+        it "should have a markupable record" do
+          @markable_model.text = "ABC"
+          @markable_model.allow_markup!.should_not == nil
+          @markable_model.has_markup?.should == true
+        end
+      end
+
+      context "when column value is missing" do
+        it "should not have a markupable record" do
+          @markable_model.text = ""
+          @markable_model.allow_markup!.should_not == nil
+          @markable_model.has_markup?.should == false
+        end
+      end
+
+      context "when removing a column's value" do
+        it "should clear out the markable record" do
+          @markable_model.text = "ABC"
+          @markable_model.save! # Needs an ID when reloaded
+          @markable_model.allow_markup!
+          @markable_model.has_markup?.should == true
+          @markable_model.text = ""
+          @markable_model.allow_markup!
+          @markable_model.reload
+          @markable_model.has_markup?.should == false
+        end
+      end
+    end
+
+    context "#dissallow_markup!" do
+      it "should clear out the markable record" do
+        @markable_model.text = "ABC"
+        @markable_model.allow_markup!.should_not == nil
+        @markable_model.has_markup?.should == true
+        @markable_model.dissallow_markup!
+        @markable_model.has_markup?.should == false
+      end
+    end
 	
 	end
 	
@@ -42,12 +71,14 @@ describe "ActsAsWiki" do
 		end
 		
 		it "should now have a markupable record" do
+      @markable_model.other_column_text = "ABC"
 			@markable_model.allow_markup!.should_not == nil
 			@markable_model.allow_markup!.should include(@markable_model.wiki_markup)
 			@markable_model.has_markup?.should == true
 		end
 		
 		it "should clear out the markable record" do 
+      @markable_model.other_column_text = "ABC"
 			@markable_model.allow_markup!.should_not == nil
 			@markable_model.has_markup?.should == true
 			@markable_model.dissallow_markup!
@@ -55,6 +86,50 @@ describe "ActsAsWiki" do
 		end
 	end
 	
+  describe "Null markup" do
+    before(:each) do
+      clean_database!
+      @markable_model = MarkableModel.new
+    end
+
+    it "should not allow markup when column value is nil" do
+      MarkableModel.wiki_columns.should == ["text"]
+      @markable_model.text = nil
+      @markable_model.allow_markup!
+      @markable_model.should_not have_markup
+    end
+
+    it "should allow markup when column value is not nil" do
+      @markable_model.text = "abc"
+      @markable_model.allow_markup!
+      @markable_model.should have_markup
+    end
+
+    it "should change markup" do
+      @markable_model.text = "abc"
+      @markable_model.allow_markup!
+      @markable_model.cache_wiki_html
+      @markable_model.text.should == "<p>abc</p>"
+      @markable_model.text = "abc_def"
+      @markable_model.allow_markup!
+      @markable_model.cache_wiki_html
+      @markable_model.text.should == "<p>abc_def</p>"
+    end
+
+    it "should remove markup when column's value is set to an empty string or nil" do
+      @markable_model.text = "abc"
+      @markable_model.save! # Needs ID for reloading
+      @markable_model.allow_markup!
+      @markable_model.should have_markup
+      @markable_model.cache_wiki_html
+      @markable_model.text.should == "<p>abc</p>"
+      @markable_model.text = nil
+      @markable_model.allow_markup!
+      @markable_model.reload
+      @markable_model.should_not have_markup
+    end
+  end
+
 	describe "WikiMarkup html testing" do
 		before(:each) do
 			clean_database!

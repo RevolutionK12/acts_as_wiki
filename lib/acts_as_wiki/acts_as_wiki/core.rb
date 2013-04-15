@@ -19,7 +19,7 @@ module ActsAsWiki::Markable
 			def initialize_acts_as_wiki_core
 				class_eval do 
 					has_many :wiki_markups, :as => :markable, :class_name => "ActsAsWiki::WikiMarkup", :dependent => :destroy
-					accepts_nested_attributes_for :wiki_markups
+					accepts_nested_attributes_for :wiki_markups, :reject_if => :all_blank
 				end
 			end
 			
@@ -28,13 +28,18 @@ module ActsAsWiki::Markable
 		module InstanceMethods
 			
 			def allow_markup!
-          #require 'pry'; binding.pry
-				if self.wiki_markups && !self.wiki_markups.empty?
-					return self.wiki_markups
+				if self.wiki_markups.present?
+          self.wiki_markups.each do |wm|
+            val = self.send(wm.column).to_s
+            wm.destroy if val.blank? # Note: model must be reloaded to detect destroyed associations
+          end
 				else
-					self.wiki_markups = wiki_columns.collect{|c| ActsAsWiki::WikiMarkup.create(:markup => self.send(c.to_s), :column => c.to_s)}
-					self.wiki_markups
+          self.wiki_markups = wiki_columns.collect do |c|
+            val = self.send(c).to_s
+            ActsAsWiki::WikiMarkup.create!(:markup => val, :column => c.to_s) if val.present?
+          end.compact
 				end
+        self.wiki_markups
 			end
 			
 			def dissallow_markup!
@@ -62,7 +67,7 @@ module ActsAsWiki::Markable
 
 			def wiki_markup(column=nil)
 				if self.wiki_markups.all?(&:new_record?)
-					self.wiki_markups.collect{|wm| wm if wm.column == column.to_s}.first
+					self.wiki_markups.select { |wm| wm.column == column }.first
 				else
 					column.nil? ? self.wiki_markups.first : self.wiki_markups.where(:column => column.to_s).first
 				end
@@ -72,9 +77,12 @@ module ActsAsWiki::Markable
 				if has_markup?
 					wiki_columns.each do |col|
 						if self.wiki_markup(col).nil?
-							wm = ActsAsWiki::WikiMarkup.create(:markup => self.send(col), :column => col.to_s)
-							self.wiki_markups << wm
-							self.send "#{col}=", wm.text
+              val = self.send(col)
+              if val.present?
+                wm = ActsAsWiki::WikiMarkup.create(:markup => val, :column => col.to_s)
+                self.wiki_markups << wm
+                self.send "#{col}=", wm.text
+              end
 						else
 							self.send "#{col}=", self.wiki_markup(col).text
 						end
