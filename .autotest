@@ -1,0 +1,11 @@
+Autotest.add_hook :initialize do |at|
+  ['.git', 'log'].each { |exception| at.add_exception(exception) }
+
+  at.add_mapping(/^lib\/acts_as_wiki\/(.*)\.rb$/) do |_, m|
+    at.files_matching(/^spec\/acts_as_wiki\/acts_as_wiki_spec.rb$/)
+  end
+
+  at.add_mapping(/^spec\/acts_as_wiki\/.*\_spec\.rb$/) { |filename, _| filename }
+end
+
+Autotest.add_discovery { "rspec" }

@@ -7,39 +7,68 @@ module ActsAsWiki::Markable
 			base.send :include, ActsAsWiki::Markable::Core::InstanceMethods
 			base.extend ActsAsWiki::Markable::Core::ClassMethods
 			
-			base.class_eval do 
-				before_save :cache_wiki_html
-			end
-			
 			base.initialize_acts_as_wiki_core
 		end
 		
 		module ClassMethods
 			
 			def initialize_acts_as_wiki_core
-				class_eval do 
-					has_many :wiki_markups, :as => :markable, :class_name => "ActsAsWiki::WikiMarkup", :dependent => :destroy
-					accepts_nested_attributes_for :wiki_markups, :reject_if => :all_blank
-				end
+        unless acts_as_wiki_disabled?
+          class_eval do
+            before_update :cache_wiki_html
+            has_many :wiki_markups, :as => :markable, :class_name => "ActsAsWiki::WikiMarkup", :dependent => :destroy
+            accepts_nested_attributes_for :wiki_markups, :reject_if => :all_blank
+          end
+        end
 			end
+
+      def disable_acts_as_wiki
+        class_eval do
+          @acts_as_wiki_disabled = true
+        end
+      end
+
+      def acts_as_wiki_disabled?
+         @acts_as_wiki_disabled == true
+      end
 			
 		end
 		
 		module InstanceMethods
-			
+
 			def allow_markup!
+        return if self.class.acts_as_wiki_disabled?
+
 				if self.wiki_markups.present?
           self.wiki_markups.each do |wm|
             val = self.send(wm.column).to_s
             wm.destroy if val.blank? # Note: model must be reloaded to detect destroyed associations
           end
 				else
-          self.wiki_markups = wiki_columns.collect do |c|
-            val = self.send(c).to_s
-            ActsAsWiki::WikiMarkup.create!(:markup => val, :column => c.to_s) if val.present?
-          end.compact
+          self.wiki_columns.each do |col|
+            val = self.send(col).to_s
+            if val.present?
+              wm = self.create_wiki_markup(val, col)
+              self.save!
+            end
+          end
 				end
         self.wiki_markups
+			end
+
+      def create_wiki_markup(val, col)
+        self.wiki_markups.create!(:markup => val, :column => col.to_s)
+      end
+
+      def cache_in_markable(wm)
+        self.send("#{wm.column}=", wm.text)
+      end
+
+			def clone_markups(cloned_markable)
+        self.wiki_markups.each do |wm|
+          cloned_markable.wiki_markups.build(:markup => wm.markup, :column => wm.column)
+          cloned_markable.cache_in_markable(wm)
+        end
 			end
 			
 			def dissallow_markup!
@@ -74,20 +103,25 @@ module ActsAsWiki::Markable
 			end
 			
 			def cache_wiki_html
-				if has_markup?
-					wiki_columns.each do |col|
-						if self.wiki_markup(col).nil?
-              val = self.send(col)
-              if val.present?
-                wm = ActsAsWiki::WikiMarkup.create(:markup => val, :column => col.to_s)
-                self.wiki_markups << wm
-                self.send "#{col}=", wm.text
-              end
-						else
-							self.send "#{col}=", self.wiki_markup(col).text
-						end
-					end
-				end
+        return if self.class.acts_as_wiki_disabled?
+
+        wiki_columns.each do |col|
+          val = self.send(col)
+          wm = self.wiki_markup(col)
+          if wm.nil?
+            if val.present?
+              wm = self.create_wiki_markup(val, col)
+              self.cache_in_markable(wm)
+            end
+          else
+            if val.present?
+              self.cache_in_markable(wm)
+            else
+              self.wiki_markup(col).destroy
+              self.wiki_markups.reload
+            end
+          end
+        end
 				return true
 			end
 						

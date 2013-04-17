@@ -10,6 +10,7 @@ module ActsAsWiki
 		#   class Passage < ActiveRecord::Base
 		#      acts_as_wiki :column => 'text' or [:text, :other_col]
 		#   end
+
 		def acts_as_wiki(opts = {})
 			options = {
 				:column => ['text']
@@ -24,6 +25,10 @@ module ActsAsWiki
 
         class_attribute :is_acts_as_wiki
         self.is_acts_as_wiki = true
+
+        if options[:disabled]
+          self.instance_variable_set("@acts_as_wiki_disabled", true)
+        end
 
 				class_eval do
 					include ActsAsWiki::Markable::Core
