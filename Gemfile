@@ -19,4 +19,5 @@ group :development do
   gem "pry"
   gem "pry-nav"
   gem "autotest-standalone"
+  gem "jeweler"
 end
