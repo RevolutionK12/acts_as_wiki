@@ -43,4 +43,5 @@ tmtags
 #
 # acts_as_wiki
 spec/debug.log
-
+.ruby-version
+.ruby-gemset

@@ -30,35 +30,57 @@ describe "ActsAsWiki" do
 		end
 
     context "#allow_markup!" do
-      context "when column value is present" do
-        it "should have a markupable record" do
-          @markable_model.text = "ABC"
-          @markable_model.save!
-          @markable_model.allow_markup!.should_not == nil
-          @markable_model.has_markup?.should == true
+      context "when creating markable" do
+        context "when column value is present" do
+          it "should create an associated markup record" do
+            @markable_model.text = "ABC"
+            @markable_model.save!
+            @markable_model.has_markup?.should == true
+          end
+
+          it "should cache wiki-ized html on the markable" do
+            @markable_model.text = "abcd"
+            @markable_model.save!
+            @markable_model.reload
+            @markable_model.text.should == "<p>abcd</p>" #/
+          end
+        end
+
+        context "when column value is missing" do
+          it "should not have a markupable record" do
+            @markable_model.save!
+            @markable_model.allow_markup!.should_not == nil
+            @markable_model.has_markup?.should == false
+          end
+        end
+
+        context "when removing a column's value" do
+          it "should clear out the markable record" do
+            @markable_model.text = "ABC"
+            @markable_model.save! # Needs an ID when reloaded
+            @markable_model.has_markup?.should == true
+            @markable_model.text = ""
+            @markable_model.cache_wiki_html
+            @markable_model.has_markup?.should == false
+          end
         end
       end
 
-      context "when column value is missing" do
-        it "should not have a markupable record" do
-          @markable_model.text = ""
+      context "when updating markup via nested attributes" do
+        it "caches the marked up value in the markable record" do
+          @markable_model.text = "ABC"
           @markable_model.save!
-          @markable_model.allow_markup!.should_not == nil
-          @markable_model.has_markup?.should == false
+          @markable_model.has_markup?.should == true
+          @id = @markable_model.wiki_markups.first.id
+          @attrs = { "wiki_markups_attributes" => { "0" => { "id" => @id, "markup"=>"abcd", "column"=>"text" } } }
+          @markable_model.update_attributes!(@attrs)
+          @markable_model.wiki_markups.reload
+          @wiki_markup = @markable_model.wiki_markups.first
+          @wiki_markup.markup.should == "abcd"
+          @markable_model.text.should == "<p>abcd</p>" #/
         end
       end
 
-      context "when removing a column's value" do
-        it "should clear out the markable record" do
-          @markable_model.text = "ABC"
-          @markable_model.save! # Needs an ID when reloaded
-          @markable_model.allow_markup!
-          @markable_model.has_markup?.should == true
-          @markable_model.text = ""
-          @markable_model.cache_wiki_html
-          @markable_model.has_markup?.should == false
-        end
-      end
     end
 
     context "#dissallow_markup!" do
@@ -71,51 +93,34 @@ describe "ActsAsWiki" do
         @markable_model.has_markup?.should == false
       end
     end
-	
-	end
+  end
 
-  describe "caching html" do
-    before(:each) do
+  describe "WikiMarkup methods with alternate column" do
+    before(:each) do 
       clean_database!
-      @markable_model = MarkableModel.new
+      @markable_model = OtherMarkableModel.new
+      @markable_model.save!
     end
-
-    context "when creating markup" do
-      it "caches html in the markable" do
-        @markable_model.text = "abc"
-        @markable_model.save!
-        @markable_model.allow_markup!
-        @markable_model.text.should == "<p>abc</p>"
-      end
+    
+    it "should have a nil markupable column" do
+      @markable_model.wiki_markup.should == nil
+    end
+    
+    it "should now have a markupable record" do
+      @markable_model.other_column_text = "ABC"
+      @markable_model.allow_markup!.should_not == nil
+      @markable_model.allow_markup!.should include(@markable_model.wiki_markup)
+      @markable_model.has_markup?.should == true
+    end
+    
+    it "should clear out the markable record" do 
+      @markable_model.other_column_text = "ABC"
+      @markable_model.allow_markup!.should_not == nil
+      @markable_model.has_markup?.should == true
+      @markable_model.dissallow_markup!
+      @markable_model.has_markup?.should == false
     end
   end
-	
-	describe "WikiMarkup methods with alternate column" do
-		before(:each) do 
-			clean_database!
-			@markable_model = OtherMarkableModel.new
-      @markable_model.save!
-		end
-		
-		it "should have a nil markupable column" do
-			@markable_model.wiki_markup.should == nil
-		end
-		
-		it "should now have a markupable record" do
-      @markable_model.other_column_text = "ABC"
-			@markable_model.allow_markup!.should_not == nil
-			@markable_model.allow_markup!.should include(@markable_model.wiki_markup)
-			@markable_model.has_markup?.should == true
-		end
-		
-		it "should clear out the markable record" do 
-      @markable_model.other_column_text = "ABC"
-			@markable_model.allow_markup!.should_not == nil
-			@markable_model.has_markup?.should == true
-			@markable_model.dissallow_markup!
-			@markable_model.has_markup?.should == false
-		end
-	end
 	
   describe "Null markup" do
     before(:each) do
@@ -171,12 +176,12 @@ describe "ActsAsWiki" do
     end
   end
 
-	describe "WikiMarkup html testing" do
-		before(:each) do
-			clean_database!
-			@markable_model = MarkableModel.new
-			@test_string = "<html><body>Test</body></html>"
-			@test_wiki = 
+  describe "WikiMarkup html testing" do
+    before(:each) do
+      clean_database!
+      @markable_model = MarkableModel.new
+      @test_string = "<html><body>Test</body></html>"
+      @test_wiki = 
 %Q{h1. Give RedCloth a try!
 
 A *simple* paragraph with
@@ -187,7 +192,9 @@ a line break, some _emphasis_ and a "link":http://redcloth.org
 
 # one
 # two}
-			@result_html =
+
+      # Note: contains tabs. Don't replace them!
+      @result_html =
 %Q{<h1>Give RedCloth a try!</h1>
 <p>A <strong>simple</strong> paragraph with<br />
 a line break, some <em>emphasis</em> and a <a href="http://redcloth.org">link</a></p>
@@ -199,35 +206,35 @@ a line break, some <em>emphasis</em> and a <a href="http://redcloth.org">link</a
 	<li>one</li>
 	<li>two</li>
 </ol>}
-		end
+    end
+
+    it "should accept html and return html" do
+      @markable_model.text = @test_string
+      @markable_model.save!
+      @markable_model.text.should eql(@test_string)
+    end
 		
-		it "should accept html and return html" do
-			@markable_model.text = @test_string
-			@markable_model.save!
-			@markable_model.text.should eql(@test_string)
-		end
-		
-		it "should put the html into the markup when we allow_markup" do
-			@markable_model.text = @test_string
-			@markable_model.save!
+    it "should put the html into the markup when we allow_markup" do
+      @markable_model.text = @test_string
+      @markable_model.save!
       @markable_model.allow_markup!
-			@markable_model.wiki_markup.markup.should eql(@test_string)
-		end
+      @markable_model.wiki_markup.markup.should eql(@test_string)
+    end
 		
-		it "should accept html in markup and return html" do
-			@markable_model.text = @test_string
-			@markable_model.save!
+    it "should accept html in markup and return html" do
+      @markable_model.text = @test_string
+      @markable_model.save!
       @markable_model.allow_markup!
-			@markable_model.text.should eql(@test_string)
-		end
+      @markable_model.text.should eql(@test_string)
+    end
 		
-		it "should accept wiki and create html" do
-			@markable_model.text = @test_wiki
-			@markable_model.save!
+    it "should accept wiki and create html" do
+      @markable_model.text = @test_wiki
+      @markable_model.save!
       @markable_model.allow_markup!
-			@markable_model.text.should eql(@result_html)	
-		end
+      @markable_model.text.should eql(@result_html)	
+    end
 		
-	end
+  end
 
 end

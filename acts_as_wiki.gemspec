@@ -21,7 +21,6 @@ Gem::Specification.new do |s|
     ".autotest",
     ".document",
     ".rspec",
-    ".rvmrc",
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
@@ -53,56 +52,19 @@ Gem::Specification.new do |s|
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
-
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<RedCloth>, [">= 4.2.2"])
-      s.add_runtime_dependency(%q<activerecord>, [">= 3.0.0"])
-      s.add_runtime_dependency(%q<activesupport>, [">= 3.0.0"])
-      s.add_runtime_dependency(%q<actionpack>, [">= 3.0.0"])
-      s.add_development_dependency(%q<rspec>, [">= 2.13.0"])
-      s.add_development_dependency(%q<rspec-rails>, [">= 2.13.0"])
-      s.add_development_dependency(%q<bundler>, [">= 1.3.0"])
-      s.add_development_dependency(%q<rcov>, [">= 0"])
-      s.add_development_dependency(%q<mysql2>, [">= 0"])
-      s.add_development_dependency(%q<pry>, [">= 0"])
-      s.add_development_dependency(%q<pry-nav>, [">= 0"])
-      s.add_development_dependency(%q<autotest-standalone>, [">= 0"])
-      s.add_development_dependency(%q<jeweler>, [">= 0"])
-      s.add_runtime_dependency(%q<RedCloth>, [">= 4.2.2"])
-      s.add_development_dependency(%q<rspec>, [">= 0"])
-    else
-      s.add_dependency(%q<RedCloth>, [">= 4.2.2"])
-      s.add_dependency(%q<activerecord>, [">= 3.0.0"])
-      s.add_dependency(%q<activesupport>, [">= 3.0.0"])
-      s.add_dependency(%q<actionpack>, [">= 3.0.0"])
-      s.add_dependency(%q<rspec>, [">= 2.13.0"])
-      s.add_dependency(%q<rspec-rails>, [">= 2.13.0"])
-      s.add_dependency(%q<bundler>, [">= 1.3.0"])
-      s.add_dependency(%q<rcov>, [">= 0"])
-      s.add_dependency(%q<mysql2>, [">= 0"])
-      s.add_dependency(%q<pry>, [">= 0"])
-      s.add_dependency(%q<pry-nav>, [">= 0"])
-      s.add_dependency(%q<autotest-standalone>, [">= 0"])
-      s.add_dependency(%q<jeweler>, [">= 0"])
-      s.add_dependency(%q<RedCloth>, [">= 4.2.2"])
-      s.add_dependency(%q<rspec>, [">= 0"])
-    end
-  else
-    s.add_dependency(%q<RedCloth>, [">= 4.2.2"])
-    s.add_dependency(%q<activerecord>, [">= 3.0.0"])
-    s.add_dependency(%q<activesupport>, [">= 3.0.0"])
-    s.add_dependency(%q<actionpack>, [">= 3.0.0"])
-    s.add_dependency(%q<rspec>, [">= 2.13.0"])
-    s.add_dependency(%q<rspec-rails>, [">= 2.13.0"])
-    s.add_dependency(%q<bundler>, [">= 1.3.0"])
-    s.add_dependency(%q<rcov>, [">= 0"])
-    s.add_dependency(%q<mysql2>, [">= 0"])
-    s.add_dependency(%q<pry>, [">= 0"])
-    s.add_dependency(%q<pry-nav>, [">= 0"])
-    s.add_dependency(%q<autotest-standalone>, [">= 0"])
-    s.add_dependency(%q<jeweler>, [">= 0"])
-    s.add_dependency(%q<RedCloth>, [">= 4.2.2"])
-    s.add_dependency(%q<rspec>, [">= 0"])
   end
-end
 
+  s.add_runtime_dependency(%q<RedCloth>, [">= 4.2.2"])
+  s.add_runtime_dependency(%q<activerecord>, ["~> 3.1.0"])
+  s.add_runtime_dependency(%q<activesupport>, ["~> 3.1.0"])
+  s.add_runtime_dependency(%q<actionpack>, ["~> 3.1.0"])
+  s.add_development_dependency(%q<rspec>, [">= 2.13.0"])
+  s.add_development_dependency(%q<rspec-rails>, [">= 2.13.0"])
+  s.add_development_dependency(%q<bundler>, [">= 1.3.0"])
+  s.add_development_dependency(%q<simplecov>, [">= 0"])
+  s.add_development_dependency(%q<mysql2>, [">= 0"])
+  s.add_development_dependency(%q<pry>, [">= 0"])
+  s.add_development_dependency(%q<pry-nav>, [">= 0"])
+  s.add_development_dependency(%q<autotest-standalone>, [">= 0"])
+  s.add_development_dependency(%q<jeweler>, [">= 0"])
+end

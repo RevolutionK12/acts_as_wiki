@@ -15,7 +15,7 @@ module ActsAsWiki::Markable
 			def initialize_acts_as_wiki_core
         unless acts_as_wiki_disabled?
           class_eval do
-            before_update :cache_wiki_html
+            after_save :cache_wiki_html
             has_many :wiki_markups, :as => :markable, :class_name => "ActsAsWiki::WikiMarkup", :dependent => :destroy
             accepts_nested_attributes_for :wiki_markups, :reject_if => :all_blank
           end
@@ -62,6 +62,7 @@ module ActsAsWiki::Markable
 
       def cache_in_markable(wm)
         self.send("#{wm.column}=", wm.text)
+        self.class.update_all({wm.column => wm.text}, "id = #{self.id}")
       end
 
 			def clone_markups(cloned_markable)
@@ -101,7 +102,7 @@ module ActsAsWiki::Markable
 					column.nil? ? self.wiki_markups.first : self.wiki_markups.where(:column => column.to_s).first
 				end
 			end
-			
+
 			def cache_wiki_html
         return if self.class.acts_as_wiki_disabled?
 
@@ -117,7 +118,8 @@ module ActsAsWiki::Markable
             if val.present?
               self.cache_in_markable(wm)
             else
-              self.wiki_markup(col).destroy
+              markup_for_column = wiki_markup(col)
+              markup_for_column.destroy if !markup_for_column.nil?
               self.wiki_markups.reload
             end
           end
