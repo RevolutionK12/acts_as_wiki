@@ -31,7 +31,7 @@ else
 end
 
 def clean_database!
-	models = [ActsAsWiki::WikiMarkup, MarkableModel, OtherMarkableModel]
+	models = [ActsAsWiki::WikiMarkup, MarkableModel, OtherMarkableModel, AssociatedMarkable]
 	models.each do |model|
 		begin
 			ActiveRecord::Base.connection.execute "DELETE from #{model.table_name}"

@@ -16,4 +16,9 @@ ActiveRecord::Schema.define :version => 0 do
 		t.text :other_column_text
 	end
 	
+	create_table :associated_markables, :force => true do |t|
+    t.integer :markable_model_id
+		t.text :text
+	end
+	
 end
