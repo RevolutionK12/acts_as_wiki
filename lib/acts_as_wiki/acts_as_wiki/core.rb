@@ -53,11 +53,10 @@ module ActsAsWiki::Markable
 
       def clone_markups(cloned_markable)
         self.wiki_markups.each do |wm|
-          cloned_markup = cloned_markable.wiki_markups.
-            where(:markable_id => cloned_markable.id, :markable_type => wm.markable_type, :column => wm.column).first
-          cloned_markup = cloned_markup || cloned_markable.wiki_markups.build(:markup => wm.markup, :column => wm.column)
-          cloned_markup.markup = wm.markup
-          cloned_markup.save!
+          cloned_wiki_markup = cloned_markable.wiki_markups.select {|cwm| cwm.column == wm.column}.first
+          cloned_wiki_markup = cloned_wiki_markup || cloned_markable.wiki_markups.build(:markup => wm.markup, :column => wm.column)
+          cloned_wiki_markup.markup = wm.markup
+          cloned_wiki_markup.save!
         end
       end
 
