@@ -55,9 +55,9 @@ Gem::Specification.new do |s|
   end
 
   s.add_runtime_dependency(%q<RedCloth>, [">= 4.2.2"])
-  s.add_runtime_dependency(%q<activerecord>, ["~> 3.1.0"])
-  s.add_runtime_dependency(%q<activesupport>, ["~> 3.1.0"])
-  s.add_runtime_dependency(%q<actionpack>, ["~> 3.1.0"])
+  s.add_runtime_dependency(%q<activerecord>, ["<= 3.2.16"])
+  s.add_runtime_dependency(%q<activesupport>, ["<= 3.2.16"])
+  s.add_runtime_dependency(%q<actionpack>, ["<= 3.2.16"])
   s.add_development_dependency(%q<rspec>, [">= 2.13.0"])
   s.add_development_dependency(%q<rspec-rails>, [">= 2.13.0"])
   s.add_development_dependency(%q<bundler>, [">= 1.3.0"])
