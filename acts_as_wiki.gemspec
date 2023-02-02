@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{acts_as_wiki}
-  s.version = "0.3.6"
+  s.version = "0.4.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["kris fox"]
@@ -55,9 +55,6 @@ Gem::Specification.new do |s|
   end
 
   s.add_runtime_dependency(%q<RedCloth>, [">= 4.2.2"])
-  s.add_runtime_dependency(%q<activerecord>, ["<= 3.2.16"])
-  s.add_runtime_dependency(%q<activesupport>, ["<= 3.2.16"])
-  s.add_runtime_dependency(%q<actionpack>, ["<= 3.2.16"])
   s.add_development_dependency(%q<rspec>, [">= 2.13.0"])
   s.add_development_dependency(%q<rspec-rails>, [">= 2.13.0"])
   s.add_development_dependency(%q<bundler>, [">= 1.3.0"])
