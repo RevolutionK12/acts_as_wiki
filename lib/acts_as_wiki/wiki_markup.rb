@@ -1,6 +1,6 @@
 module ActsAsWiki
   class WikiMarkup < ::ActiveRecord::Base
-    attr_accessible :markable_id, :markable_type, :markup, :column
+    # attr_accessible :markable_id, :markable_type, :markup, :column
 
     validates :markable_id, :markable_type, :column, :presence => true
 
